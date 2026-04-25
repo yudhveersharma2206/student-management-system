@@ -6,11 +6,11 @@ function App() {
   const [email, setEmail] = useState("");
   const [course, setCourse] = useState("");
   const [editId, setEditId] = useState(null);
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
+
   const [showModal, setShowModal] = useState(false);
   const [toast, setToast] = useState("");
   const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState("");
 
   const fetchStudents = async () => {
     setLoading(true);
@@ -29,14 +29,18 @@ function App() {
 
   // ❌ Validation
   if (!name || !email || !course) {
-    setError("All fields are required ❌");
-    setMessage("");
+    setToast("All fields are required ❌");
+    setTimeout(() => {
+  setToast("");
+}, 2000);
     return;
   }
 
   if (!email.includes("@")) {
-    setError("Enter valid email ❌");
-    setMessage("");
+    setToast("Enter valid email ❌");
+    setTimeout(() => {
+  setToast("");
+}, 2000);
     return;
   }
 
@@ -48,7 +52,10 @@ function App() {
         body: JSON.stringify({ name, email, course }),
       });
       setToast("Student Updated Successfully ✅");
+      setTimeout(() => {
       setShowModal(false);
+      setToast("");
+    }, 2000);
     } else {
       await fetch("http://localhost:8080/students", {
         method: "POST",
@@ -56,9 +63,11 @@ function App() {
         body: JSON.stringify({ name, email, course }),
       });
       setToast("Student Added Successfully ✅");
+      setTimeout(() => {
+      setToast("");
+    }, 2000);
     }
 
-    setError("");
     setEditId(null);
     setName("");
     setEmail("");
@@ -66,12 +75,8 @@ function App() {
     fetchStudents();
 
   } catch (err) {
-    setError("Something went wrong ❌");
-    setMessage("");
+    setToast("Something went wrong ❌");
   }
-    setTimeout(() => {
-      setToast("");
-    }, 2000);
 };
 
   // DELETE
@@ -101,7 +106,11 @@ function App() {
     setShowModal(true);
   };
 
-  return (
+  const filteredStudents = students.filter((s) =>
+  s.name.toLowerCase().includes(search.toLowerCase())
+);
+
+ return (
   <div className="container">
 
     {/* ✅ Toast */}
@@ -118,17 +127,26 @@ function App() {
         <input
           placeholder="Name"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => {
+            setName(e.target.value);
+            setToast("");
+          }}
         />
         <input
           placeholder="Email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            setToast("");
+          }}
         />
         <input
           placeholder="Course"
           value={course}
-          onChange={(e) => setCourse(e.target.value)}
+          onChange={(e) => {
+            setCourse(e.target.value);
+            setToast("");
+          }}
         />
       </div>
 
@@ -140,9 +158,19 @@ function App() {
         {editId ? "Update Student" : "Add Student"}
       </button>
 
-      {/* Messages */}
-      {message && <p style={{ color: "green", fontWeight: "bold" }}>{message}</p>}
-      {error && <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>}
+      {/* 🔍 Search */}
+      <input
+        placeholder="🔍 Search by name..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        style={{
+          width: "100%",
+          padding: "10px",
+          marginTop: "10px",
+          borderRadius: "8px",
+          border: "1px solid #ccc"
+        }}
+      />
 
       <h2 style={{ marginTop: "20px" }}>Student List</h2>
 
@@ -150,24 +178,38 @@ function App() {
       {loading ? (
         <p style={{ textAlign: "center" }}>Loading... ⏳</p>
       ) : (
-        students.map((s) => (
-          <div key={s.id} className="student">
-            <div className="student-info">
-              <strong>{s.name}</strong>
-              <span>📧 {s.email}</span>
-              <span>🎓 {s.course}</span>
-            </div>
+        <>
+          {filteredStudents.length === 0 && (
+            <p style={{ textAlign: "center" }}>
+              No students found 🚫
+            </p>
+          )}
 
-            <div className="student-actions">
-              <button className="edit-btn" onClick={() => editStudent(s)}>
-                Edit
-              </button>
-              <button className="delete-btn" onClick={() => deleteStudent(s.id)}>
-                Delete
-              </button>
+          {filteredStudents.map((s) => (
+            <div key={s.id} className="student">
+              <div className="student-info">
+                <strong>{s.name}</strong>
+                <span>📧 {s.email}</span>
+                <span>🎓 {s.course}</span>
+              </div>
+
+              <div className="student-actions">
+                <button
+                  className="edit-btn"
+                  onClick={() => editStudent(s)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="delete-btn"
+                  onClick={() => deleteStudent(s.id)}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
-          </div>
-        ))
+          ))}
+        </>
       )}
     </div>
 
