@@ -67,7 +67,7 @@ student-management/
 
 ### 1️⃣ Clone Repository
 
-git clone https://github.com/your-username/student-management-system.git
+git clone https://github.com/yudhveersharma2206/student-management-system.git
 cd student-management-system
 
 ---
