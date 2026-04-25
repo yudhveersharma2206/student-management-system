@@ -1,121 +1,115 @@
-# Student Management System
+# Acadify – Student Management System
 
-A full-stack Student Management System built using React (Frontend) and Spring Boot (Backend).  
-This application allows users to perform complete CRUD operations with a modern UI and real-time updates.
+Acadify is a full-stack web application designed to manage student data efficiently. It provides a clean UI and powerful backend to perform all CRUD operations seamlessly.
+
+---
+
+## Live Demo
+
+🔗 https://acadify-app.netlify.app
 
 ---
 
 ## Features
 
-- Add new students
-- Edit existing student details (Modal Popup)
-- Delete students with confirmation
-- Search students by name
-- Toast notifications for user feedback
-- Loading indicator while fetching data
-- Clean and responsive UI
+-  Add new students  
+-  View all students  
+-  Update student details  
+-  Delete student records  
+-  Search functionality  
+-  Fast and responsive UI  
+-  Deployed on cloud  
 
 ---
 
 ## Tech Stack
 
-Frontend:
-
+### Frontend
 - React.js
 - CSS (Custom Styling)
 
-Backend:
+### Backend
+- Spring Boot (Java)
+- REST APIs
 
-- Spring Boot
-- REST API
+### Database
+- PostgreSQL (Render)
 
-Database:
-
-- MySQL
+### Deployment
+- Frontend: Netlify  
+- Backend: Render  
+- Version Control: Git & GitHub  
 
 ---
 
 ## Project Structure
 
-```
 student-management/
 │
-├── backend/
-├── frontend/
+├── backend/          # Spring Boot Backend
+│   ├── src/
+│   ├── pom.xml
+│   └── Dockerfile
+│
+├── frontend/         # React Frontend
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
 └── README.md
-```
+
 ---
 
 ## Installation & Setup
 
-1. Clone Repository
+### 1️⃣ Clone Repository
 
-git clone <https://github.com/yudhveersharma2206/student-management-system.git>  
-cd student-management  
+git clone https://github.com/your-username/student-management-system.git
+cd student-management-system
 
 ---
 
-2. Backend Setup
+### 2️⃣ Backend Setup
 
 cd backend  
-./mvnw spring-boot:run  
-
-Runs on: <http://localhost:8080>
+mvn clean install  
+mvn spring-boot:run  
 
 ---
 
-3.  Frontend Setup
+### 3️⃣ Frontend Setup
 
 cd frontend  
 npm install  
 npm start  
 
-Runs on: <http://localhost:3000>
-
 ---
 
-## API Endpoints
+## 🔗 API Endpoints
 
-GET     /students          → Get all students  
-POST    /students          → Add student  
-PUT     /students/{id}     → Update student  
-DELETE  /students/{id}     → Delete student  
-
----
-
-## Deployment
-
-Frontend: Netlify  
-Backend: Render  
-
-⚠️ Important: Update API URL in frontend before deployment.
-
----
-
-## Features Included
-
-- Real-time search filtering  
-- Modal-based editing  
-- Toast notifications  
-- Dynamic UI updates  
-
----
-
-## Author
-
-Yudhveer Sharma  
+GET     /api/students        → Get all students  
+POST    /api/students        → Add new student  
+PUT     /api/students/{id}   → Update student  
+DELETE  /api/students/{id}   → Delete student  
 
 ---
 
 ## Future Improvements
 
-- Authentication (Login/Register)  
-- Role-based system (Admin/Faculty/Student)  
-- Dashboard analytics  
-- Dark mode  
+-  Authentication (Login/Register)
+-  Role-based access (Admin/User)
+-  Dashboard analytics
+-  Dark mode
+-  Pagination & sorting
 
 ---
 
-## Conclusion
+## Author
 
-This project demonstrates full-stack development skills including API integration, state management,and modern UI design.
+Yudhveer Sharma
+
+---
+
+## Support
+
+If you like this project, please ⭐ the repository!
