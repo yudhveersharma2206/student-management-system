@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+const API_URL = "https://student-backend-1o16.onrender.com/api";
 
 function App() {
   const [students, setStudents] = useState([]);
@@ -14,7 +15,7 @@ function App() {
 
   const fetchStudents = async () => {
     setLoading(true);
-    const res = await fetch("http://localhost:8080/students");
+    const res = await fetch(`${API_URL}/students`);
     const data = await res.json();
     setStudents(data);
     setLoading(false);
@@ -46,18 +47,20 @@ function App() {
 
   try {
     if (editId) {
-      await fetch(`http://localhost:8080/students/${editId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, course }),
-      });
+      await fetch(`${API_URL}/students/${editId}`, {
+  method: "PUT",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({ name, email, course }),
+});
       setToast("Student Updated Successfully ✅");
       setTimeout(() => {
       setShowModal(false);
       setToast("");
     }, 2000);
     } else {
-      await fetch("http://localhost:8080/students", {
+      await fetch(`${API_URL}/students`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, course }),
@@ -86,9 +89,9 @@ function App() {
 
   if (!confirmDelete) return;
 
-  await fetch(`http://localhost:8080/students/${id}`, {
-    method: "DELETE",
-  });
+  await fetch(`${API_URL}/students/${id}`, {
+  method: "DELETE",
+});
 
     setToast("Student Deleted ❌");
     setTimeout(() => {
