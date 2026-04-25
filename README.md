@@ -1,32 +1,120 @@
-# 🚀 Student Management System
+# Student Management System
 
-A robust backend application developed using Spring Boot and MySQL that provides a complete solution for managing student records through RESTful APIs.
+A full-stack Student Management System built using React (Frontend) and Spring Boot (Backend).  
+This application allows users to perform complete CRUD operations with a modern UI and real-time updates.
 
-## 🔥 Features
+---
 
-- Create, Read, Update, and Delete (CRUD) operations on student data
-- REST API architecture following industry standards
-- Integration with MySQL database for persistent data storage
-- Clean layered architecture (Controller → Service → Repository)
-- Automatic table creation using JPA & Hibernate
+## Features
 
-## 🛠 Tech Stack
+- Add new students
+- Edit existing student details (Modal Popup)
+- Delete students with confirmation
+- Search students by name
+- Toast notifications for user feedback
+- Loading indicator while fetching data
+- Clean and responsive UI
 
-- Java
+---
+
+## Tech Stack
+
+Frontend:
+
+- React.js
+- CSS (Custom Styling)
+
+Backend:
+
 - Spring Boot
-- Spring Data JPA
+- REST API
+
+Database:
+
 - MySQL
-- Maven
 
-## 📌 API Endpoints
+---
 
-- `GET /students` → Get all students
-- `POST /students` → Add a new student
-- `PUT /students/{id}` → Update student
-- `DELETE /students/{id}` → Delete student
+## Project Structure
 
-## 🎯 Project Highlights
+student-management/
+│
+├── backend/
+├── frontend/
+└── README.md
 
-- Built with industry-level architecture
-- Demonstrates backend development skills using Java ecosystem
-- Scalable and ready for frontend integration
+---
+
+## Installation & Setup
+
+1. Clone Repository
+
+git clone <https://github.com/yudhveersharma2206/student-management-system.git>  
+cd student-management  
+
+---
+
+2. Backend Setup
+
+cd backend  
+./mvnw spring-boot:run  
+
+Runs on: <http://localhost:8080>
+
+---
+
+3.  Frontend Setup
+
+cd frontend  
+npm install  
+npm start  
+
+Runs on: <http://localhost:3000>
+
+---
+
+## API Endpoints
+
+GET     /students          → Get all students  
+POST    /students          → Add student  
+PUT     /students/{id}     → Update student  
+DELETE  /students/{id}     → Delete student  
+
+---
+
+## Deployment
+
+Frontend: Netlify  
+Backend: Render  
+
+⚠️ Important: Update API URL in frontend before deployment.
+
+---
+
+## Features Included
+
+- Real-time search filtering  
+- Modal-based editing  
+- Toast notifications  
+- Dynamic UI updates  
+
+---
+
+## Author
+
+Yudhveer Sharma  
+
+---
+
+## Future Improvements
+
+- Authentication (Login/Register)  
+- Role-based system (Admin/Faculty/Student)  
+- Dashboard analytics  
+- Dark mode  
+
+---
+
+## Conclusion
+
+This project demonstrates full-stack development skills including API integration, state management,and modern UI design.
