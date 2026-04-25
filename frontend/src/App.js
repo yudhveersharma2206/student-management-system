@@ -124,7 +124,7 @@ function App() {
     )}
 
     <div className="card">
-      <h1>Student Management System</h1>
+      <h1>Acadify</h1>
 
       <div className="form">
         <input
