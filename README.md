@@ -37,12 +37,13 @@ Database:
 
 ## Project Structure
 
+```
 student-management/
 │
 ├── backend/
 ├── frontend/
 └── README.md
-
+```
 ---
 
 ## Installation & Setup
