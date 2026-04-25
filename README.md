@@ -44,6 +44,8 @@ Acadify is a full-stack web application designed to manage student data efficien
 
 ## Project Structure
 
+```
+
 student-management/
 │
 ├── backend/          # Spring Boot Backend
@@ -58,6 +60,7 @@ student-management/
 │
 └── README.md
 
+```
 ---
 
 ## Installation & Setup
