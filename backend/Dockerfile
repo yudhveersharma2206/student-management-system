@@ -1,8 +1,5 @@
-# Use Java 17
-FROM openjdk:17
+FROM eclipse-temurin:17-jdk
 
-# Copy jar file
-COPY backend/target/*.jar app.jar
+COPY target/*.jar app.jar
 
-# Run app
 ENTRYPOINT ["java", "-jar", "/app.jar"]
