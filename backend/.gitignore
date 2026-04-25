@@ -1,8 +1,14 @@
-HELP.md
 target/
+.mvn/wrapper/maven-wrapper.properties
 .mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.sh
+.mvn/wrapper/maven-wrapper.bat
 !**/src/main/**/target/
 !**/src/test/**/target/
+
+*.log
+*.jar
+
 
 ### STS ###
 .apt_generated
